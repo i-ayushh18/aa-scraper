@@ -1,0 +1,1 @@
+# Evasion module for bot detection bypass
