@@ -44,22 +44,97 @@ contest_compliant_scraper.py     # Main entry point
 
 ## Quick Start
 
-### Docker (Contest Method)
+### Docker Method (Recommended - Works on All Platforms)
+
+#### Prerequisites
+- Docker installed on your system
+- Internet connection for Chrome downloads
+
+#### For Mac/Linux:
 ```bash
+# Clone the repository
+git clone https://github.com/ayushv18/aa-flight-scraper.git
+cd aa-flight-scraper
+
 # Build the contest image
 docker build -t aa-flight-scraper .
 
 # Run the scraper
 docker run --rm -v $(pwd)/output:/app/output aa-flight-scraper
 
-# Windows PowerShell
-docker run --rm -v "${PWD}/output:/app/output" aa-flight-scraper
+# Check results
+ls output/
+cat output/contest_output.json
 ```
 
-### Local Development
+#### For Windows (PowerShell):
+```powershell
+# Clone the repository
+git clone https://github.com/ayushv18/aa-flight-scraper.git
+cd aa-flight-scraper
+
+# Build the contest image
+docker build -t aa-flight-scraper .
+
+# Run the scraper
+docker run --rm -v "${PWD}/output:/app/output" aa-flight-scraper
+
+# Check results
+dir output/
+type output/contest_output.json
+```
+
+#### For Windows (Command Prompt):
+```cmd
+# Clone the repository
+git clone https://github.com/ayushv18/aa-flight-scraper.git
+cd aa-flight-scraper
+
+# Build the contest image
+docker build -t aa-flight-scraper .
+
+# Run the scraper
+docker run --rm -v "%cd%/output:/app/output" aa-flight-scraper
+
+# Check results
+dir output\
+type output\contest_output.json
+```
+
+### Alternative: Pull from Docker Hub
 ```bash
-# Install dependencies
+# Pull the pre-built image (when available)
+docker pull ayushv18/aa-flight-scraper:latest
+
+# Run directly
+docker run --rm -v $(pwd)/output:/app/output ayushv18/aa-flight-scraper:latest
+```
+
+### Local Development (Advanced Users)
+
+#### Mac/Linux:
+```bash
+# Install Python 3.11+
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
+
+# Install Chrome/Chromium
+# Mac: brew install --cask google-chrome
+# Ubuntu: sudo apt install google-chrome-stable
+
+# Run scraper
+python contest_compliant_scraper.py
+```
+
+#### Windows:
+```powershell
+# Install Python 3.11+
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+
+# Install Chrome from https://www.google.com/chrome/
 
 # Run scraper
 python contest_compliant_scraper.py
@@ -113,12 +188,46 @@ python contest_compliant_scraper.py
 - Comprehensive CPP value analysis
 - Advanced verification challenge bypass
 
+## Platform-Specific Notes
+
+### Mac Users
+- **Docker**: Install Docker Desktop for Mac
+- **Chrome**: Automatically downloaded by undetected-chromedriver
+- **Volume Mounting**: Use `$(pwd)` syntax in Terminal
+
+### Linux Users  
+- **Docker**: Install docker.io package
+- **Chrome**: Automatically handled in Docker container
+- **Permissions**: May need `sudo` for Docker commands
+
+### Windows Users
+- **Docker**: Install Docker Desktop for Windows
+- **PowerShell**: Use `${PWD}` for volume mounting
+- **Command Prompt**: Use `%cd%` for volume mounting
+- **WSL**: Can use Linux commands in WSL2
+
+## Troubleshooting
+
+### Common Issues
+1. **Docker not found**: Install Docker Desktop from docker.com
+2. **Permission denied**: 
+   - Linux: Add user to docker group or use sudo
+   - Windows: Run as Administrator
+3. **Volume mounting fails**: 
+   - Ensure output directory exists: `mkdir output`
+   - Check Docker Desktop file sharing settings
+4. **Chrome download fails**: Check internet connection and firewall
+
+### Expected Output
+- **Runtime**: 4-6 minutes
+- **Files Created**: 3 JSON files in output/ directory
+- **Success Indicator**: "Contest-compliant JSON generated successfully!"
+
 ## Dependencies
-- Python 3.11
-- Selenium WebDriver
-- undetected-chromedriver
-- Pydantic for data validation
-- Chrome/Chromium browser
+- **Docker**: For containerized execution (recommended)
+- **Python 3.11+**: For local development
+- **Chrome/Chromium**: Automatically managed
+- **Internet Connection**: Required for Chrome and AA.com access
 
 ---
-**Contest Submission by ayushv18(Ayush Verma)**
+**Contest Submission by ayushv18**
