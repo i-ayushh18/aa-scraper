@@ -54,7 +54,6 @@ class VerificationHandler:
             
             if found_keywords:
                 logger.warning(f"VERIFICATION DETECTED! Found keywords: {found_keywords}")
-                self._save_screenshot("verification_detected_by_keywords")
                 
                 # Determine challenge type and handle accordingly
                 if any(keyword in found_keywords for keyword in ['incapsula', 'imperva', 'incident_id', '_incapsula_resource']):
@@ -66,10 +65,8 @@ class VerificationHandler:
                 
                 if success:
                     logger.info("SUCCESS: Verification challenge bypassed!")
-                    self._save_screenshot("verification_bypassed_success")
                 else:
                     logger.warning("Verification bypass failed")
-                    self._save_screenshot("verification_bypass_failed")
             else:
                 logger.info("No verification challenge detected - proceeding normally")
                 
@@ -322,14 +319,3 @@ class VerificationHandler:
             logger.debug(f"Error checking Incapsula resolution: {e}")
             return False
     
-    def _save_screenshot(self, name: str) -> None:
-        """Save screenshot for debugging"""
-        try:
-            import os
-            from src.config import Config
-            os.makedirs(Config.OUTPUT_DIR, exist_ok=True)
-            screenshot_path = os.path.join(Config.OUTPUT_DIR, f"{name}.png")
-            self.driver.save_screenshot(screenshot_path)
-            logger.info(f"Screenshot saved: {screenshot_path}")
-        except Exception as e:
-            logger.debug(f"Could not save screenshot: {e}")

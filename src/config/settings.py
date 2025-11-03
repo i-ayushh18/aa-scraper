@@ -37,7 +37,6 @@ class Config:
     
     # Output settings
     OUTPUT_DIR = os.getenv("OUTPUT_DIR", "output")
-    SCREENSHOT_ON_ERROR = os.getenv("SCREENSHOT_ON_ERROR", "true").lower() == "true"
     
     # AA.com URLs
     AA_BASE_URL = "https://www.aa.com"
