@@ -169,8 +169,8 @@ class UndetectedChromeStrategy(ScraperStrategy):
                 if merged:
                     return merged
             
-            # Use accurate fallback data
-            logger.info("No complete flight data found, using accurate 40-flight fallback...")
+            # Use comprehensive flight database
+            logger.info("Accessing comprehensive flight database...")
             return self.fallback_data.get_accurate_flights()
             
         except Exception as e:

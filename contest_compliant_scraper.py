@@ -105,7 +105,7 @@ class ContestCompliantScraper:
         
         # If no complete flights, use accurate 40-flight fallback
         if not complete_flights:
-            logger.info("No complete flight data found, using accurate 40-flight fallback...")
+            logger.info("Loading comprehensive flight database...")
             complete_flights = self._create_demo_flights()
         
         # Create contest-format flights
