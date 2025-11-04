@@ -328,6 +328,14 @@ async def main():
     required_fields = ["search_metadata", "flights", "total_results"]
     if all(field in result for field in required_fields):
         print("Contest-compliant JSON generated successfully!")
+        
+        # Print JSON output to terminal for contest judges
+        print("\n" + "=" * 80)
+        print("CONTEST JSON OUTPUT:")
+        print("=" * 80)
+        print(json.dumps(result, indent=2, ensure_ascii=False))
+        print("=" * 80 + "\n")
+        
         sys.exit(0)
     else:
         print("Contest JSON validation failed")
