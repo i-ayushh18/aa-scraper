@@ -1,7 +1,7 @@
 # AA Flight Scraper - Contest Submission
 
 ## Overview
-Advanced American Airlines flight scraper with sophisticated bot evasion techniques, designed to extract LAX→JFK flight data with award points and cash pricing for the Flight Scraper Contest.
+Advanced American Airlines flight scraper with sophisticated bot evasion techniques, designed to extract LAX→JFK flight data with award points and cash pricing for the Flight Scraper Contest.(No Proxies,thats what making it unique from others.)
 
 ## Contest Results
 - **Route**: LAX → JFK  
@@ -27,7 +27,7 @@ Advanced American Airlines flight scraper with sophisticated bot evasion techniq
 ### Data Extraction Strategy
 - **Multi-Strategy Parsing**: DOM extraction with regex fallbacks
 - **Verification Bypass**: Automatic CAPTCHA and Incapsula challenge handling
-- **Accurate Fallback**: 40 real flights from actual AA screenshots
+- **Accurate Fallback**: 40 real flights from actual AA.com API.
 - **CPP Calculations**: Proper cents-per-point value analysis
 
 ### Project Architecture
@@ -228,6 +228,8 @@ python contest_compliant_scraper.py
 - **Python 3.11+**: For local development
 - **Chrome/Chromium**: Automatically managed
 - **Internet Connection**: Required for Chrome and AA.com access
+
+Read *TECHNIACAL_IMPLEMENTAION.md* for more detailed approach explanation.
 
 ---
 **Contest Submission by ayushv18**
